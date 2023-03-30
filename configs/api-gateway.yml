@@ -4,12 +4,6 @@ server:
 spring:
   application:
     name: api-gateway
-  eureka:
-    client:
-      register-with-eureka: true
-      fetch-registry: true
-      serviceUrl:
-        defaultZone: http://eurekaserver:8761/eureka
   cloud:
     gateway:
       # discovery:
@@ -50,17 +44,7 @@ queue:
   movie:
     name: MovieQueue
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: info
-  info:
-    env:
-      enabled: true
-  endpoint:
-    info:
-      enabled: true
+
 
 info:
   app:
@@ -70,3 +54,18 @@ info:
   svc:
     intanceid: ${eureka.instance.instance-id}
     port: ${server.port}
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka
+  management:
+    endpoint:
+      gateway:
+        enabled: true
+    endpoints:
+      web:
+        exposure:
+          include: gateway
