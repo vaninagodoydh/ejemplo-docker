@@ -61,29 +61,21 @@ eureka:
       defaultZone: http://eurekaserver:8761/eureka
 
 management:
-  endpoint:
-    gateway:
-      enabled: true
   endpoints:
     web:
       exposure:
-        include: gateway
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: info, gateway
-#  info:
-#    env:
-#      enabled: true
-#  gateway:
-#    env:
-#      enabled: true
-#  endpoint:
-#    info:
-#      enabled: true
-#    gateway:
-#      enabled: true
+        include: info, gateway
+  info:
+    env:
+      enabled: true
+  gateway:
+    env:
+      enabled: true
+  endpoint:
+    info:
+      enabled: true
+    gateway:
+      enabled: true
 
 
 
