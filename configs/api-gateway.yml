@@ -58,7 +58,12 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://eurekaserver:8761/eureka
+      defaultZone: http://eurekserver:8761/eureka
+  instance:
+    hostname: apigateway
+    nonSecurePort: ${server.port}
+    preferIdAddress: true
+
 
 management:
   endpoints:
