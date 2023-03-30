@@ -1,15 +1,22 @@
 server:
   port: 8080
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekserver:8761/eureka/
+  instance:
+    hostname: apigateway
+    nonSecurePort: ${server.port}
+    preferIpAddress: true
+
 spring:
-  application:
-    name: api-gateway
   cloud:
     gateway:
       discovery:
-         locator:
-           enabled: true
-#           lower-case-service-id: true
+        locator:
+          enabled: true
+          lower-case-service-id: true
       routes:
         - id: aplicativo_movie-service
           uri: lb://movie-service
@@ -31,18 +38,24 @@ spring:
               args:
                 name: catalogService
                 fallbackUri: forward:/fallback/catalog
-  zipkin:
-    base-url: http://zipkin:9411
-    enabled: true
-  rabbitmq:
-    username: guest
-    password: guest
-    host: rabbitmq3
-    port: 5672
 
 queue:
   movie:
     name: MovieQueue
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+  endpoint:
+    gateway:
+      enabled: true
+    info:
+      enabled: true
 
 info:
   app:
@@ -52,35 +65,100 @@ info:
   svc:
     intanceid: ${eureka.instance.instance-id}
     port: ${server.port}
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    org.springframework.http.server.reactive: INFO
+    org.springframework.web.reactive: INFO
+    org.springframework.boot.autoconfigure.web: INFO
+    reactor.netty: INFO
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    serviceUrl:
-      defaultZone: http://eurekaserver:8761/eureka
+
+
+
+#server:
+#  port: 8080
+#
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    serviceUrl:
+#      defaultZone: http://eurekaserver:8761/eureka
 #  instance:
-#    hostname: apigateway
+#    hostname: localhost
 #    nonSecurePort: ${server.port}
 #    preferIdAddress: true
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: info, gateway
-  info:
-    env:
-      enabled: true
-  gateway:
-    env:
-      enabled: true
-  endpoint:
-    info:
-      enabled: true
-    gateway:
-      enabled: true
+#
+#spring:
+#  application:
+#    name: api-gateway
+#  cloud:
+#    gateway:
+#      discovery:
+#         locator:
+#           enabled: true
+##           lower-case-service-id: true
+#      routes:
+#        - id: aplicativo_movie-service
+#          uri: lb://movie-service
+#          predicates:
+#            - Path=/api/movies/**
+#          filters:
+#            - StripPrefix=2
+#            - name: CircuitBreaker
+#              args:
+#                name: moviesService
+#                fallbackUri: forward:/fallback/movies
+#        - id: aplicativo_catalog-service
+#          uri: lb://catalog-service
+#          predicates:
+#            - Path=/api/catalog/**
+#          filters:
+#            - StripPrefix=2
+#            - name: CircuitBreaker
+#              args:
+#                name: catalogService
+#                fallbackUri: forward:/fallback/catalog
+#  zipkin:
+#    base-url: http://zipkin:9411
+#    enabled: true
+#  rabbitmq:
+#    username: guest
+#    password: guest
+#    host: rabbitmq3
+#    port: 5672
+#
+#queue:
+#  movie:
+#    name: MovieQueue
+#
+#info:
+#  app:
+#    name: ${spring.application.name}
+#    version: 1.0.0
+#    description: API Gateway
+#  svc:
+#    intanceid: ${eureka.instance.instance-id}
+#    port: ${server.port}
+#
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: info
+#  info:
+#    env:
+#      enabled: true
+#  gateway:
+#    env:
+#      enabled: true
+#  endpoint:
+#    info:
+#      enabled: true
+#    gateway:
+#      enabled: true
 
 
 
