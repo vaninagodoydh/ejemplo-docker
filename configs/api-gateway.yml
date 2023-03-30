@@ -35,6 +35,9 @@ spring:
               args:
                 name: catalogService
                 fallbackUri: forward:/fallback/catalog
+  zipkin:
+    base-url: http://zipkin:9411
+    enabled: true
 
 queue:
   movie:
