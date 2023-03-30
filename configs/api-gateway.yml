@@ -14,17 +14,17 @@ spring:
         - id: aplicativo_movie-service
           uri: lb://movie-service
           predicates:
-            - Path=/**
+            - Path=/api/movies/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
               args:
                 name: moviesService
-#                fallbackUri: forward:/fallback/movies
+                fallbackUri: forward:/fallback/movies
         - id: aplicativo_catalog-service
           uri: lb://catalog-service
           predicates:
-            - Path=/**
+            - Path=/api/catalog/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
