@@ -44,8 +44,6 @@ queue:
   movie:
     name: MovieQueue
 
-
-
 info:
   app:
     name: ${spring.application.name}
@@ -61,22 +59,31 @@ eureka:
     fetch-registry: true
     serviceUrl:
       defaultZone: http://eurekaserver:8761/eureka
+
 management:
+  endpoint:
+    gateway:
+      enabled: true
   endpoints:
     web:
       exposure:
-        include: info, gateway
-  info:
-    env:
-      enabled: true
-  gateway:
-    env:
-      enabled: true
-  endpoint:
-    info:
-      enabled: true
-    gateway:
-      enabled: true
+        include: gateway
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: info, gateway
+#  info:
+#    env:
+#      enabled: true
+#  gateway:
+#    env:
+#      enabled: true
+#  endpoint:
+#    info:
+#      enabled: true
+#    gateway:
+#      enabled: true
 
 
 
