@@ -10,8 +10,8 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
-    preferIpAddress: true
+    hostname: eurekaserver
+    preferIpAddress: false
 
   client:
     fetch-registry: false
