@@ -12,7 +12,7 @@ spring:
            lower-case-service-id: true
       routes:
         - id: aplicativo_movie-service
-          uri: lb://movie-service
+          uri: lb://movieservice
           predicates:
             - Path=/api/movies/**
           filters:
