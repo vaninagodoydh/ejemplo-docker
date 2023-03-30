@@ -35,6 +35,9 @@ spring:
     password: guest
     host: localhost
     port: 5672
+  zipkin:
+    base-url: http://zipkin:9411
+    enabled: true
 
 queue:
   movie:
