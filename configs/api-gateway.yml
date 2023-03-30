@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: api-gateway
   eureka:
     client:
       register-with-eureka: true
@@ -38,6 +40,11 @@ spring:
   zipkin:
     base-url: http://zipkin:9411
     enabled: true
+  rabbitmq:
+    username: guest
+    password: guest
+    host: rabbitmq3
+    port: 5672
 
 queue:
   movie:
