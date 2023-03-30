@@ -9,7 +9,7 @@ spring:
       discovery:
          locator:
            enabled: true
-           lower-case-service-id: true
+#           lower-case-service-id: true
       routes:
         - id: aplicativo_movie-service
           uri: lb://movie-service
@@ -59,10 +59,10 @@ eureka:
     fetch-registry: true
     serviceUrl:
       defaultZone: http://eurekaserver:8761/eureka
-  instance:
-    hostname: apigateway
-    nonSecurePort: ${server.port}
-    preferIdAddress: true
+#  instance:
+#    hostname: apigateway
+#    nonSecurePort: ${server.port}
+#    preferIdAddress: true
 
 
 management:
