@@ -14,7 +14,7 @@ spring:
         - id: aplicativo_movie-service
           uri: lb://movie-service
           predicates:
-            - Path=/api/movies/**
+            - Path=/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
@@ -24,7 +24,7 @@ spring:
         - id: aplicativo_catalog-service
           uri: lb://catalog-service
           predicates:
-            - Path=/api/catalog/**
+            - Path=/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
