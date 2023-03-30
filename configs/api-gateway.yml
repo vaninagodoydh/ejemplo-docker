@@ -20,7 +20,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: moviesService
-                fallbackUri: forward:/fallback/movies
+#                fallbackUri: forward:/fallback/movies
         - id: aplicativo_catalog-service
           uri: lb://catalog-service
           predicates:
