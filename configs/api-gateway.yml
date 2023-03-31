@@ -6,7 +6,7 @@ eureka:
     serviceUrl:
       defaultZone: http://eurekserver:8761/eureka/
   instance:
-    hostname: apigateway
+    hostname: api-gateway
     nonSecurePort: ${server.port}
     preferIpAddress: true
 
