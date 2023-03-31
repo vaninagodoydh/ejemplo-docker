@@ -9,9 +9,9 @@ spring:
     enabled: true
 
 eureka:
-  instance:
-    hostname: localhost
-    preferIpAddress: true
+#  instance:
+#    hostname: localhost
+#    preferIpAddress: true
 
   client:
     fetch-registry: false
