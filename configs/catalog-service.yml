@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: catalog-service
+    hostname: catalogservice
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:

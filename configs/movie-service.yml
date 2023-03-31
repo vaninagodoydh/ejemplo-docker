@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: movie-service
+    hostname: movieservice
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
